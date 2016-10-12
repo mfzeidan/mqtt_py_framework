@@ -1,6 +1,10 @@
 import socket
 import fcntl
 import struct	
+import paho.mqtt.client as mqtt
+import paho.mqtt.publish as publish
+import sys
+
 
 def get_ip_address(ifname):
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -23,9 +27,15 @@ def receive_messages(device_ip,topic,message):
 def publish_messages(device_ip,topic_to_publish_to,message_to_publish):
    print "you've just published message: " + str(message_to_publish) + " to " + str(device_ip)
 
-class test:
-   def publish_msg():
-      print "hi"
+
+def publish_message(device_ip,topic_to_publish,message_to_publish):
+   publish.single(topic_to_publish,message_to_publish,device_ip)
+   
+
+#publish.single("paho/test/single", "boo", hostname="test.mosquitto.org")
+
+
+   
 
 
    
