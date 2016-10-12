@@ -1,4 +1,4 @@
-import mqtt_framework as mqtt
+import mqtt_backend as mqtt_backend
 
 import socket
 import fcntl
@@ -6,7 +6,7 @@ import struct
 
 port = 'eth0'
 
-server = mqtt.get_ip_address(port)
+server = mqtt_backend.get_ip_address(port)
 
 
 topic = "mytopic"
@@ -18,6 +18,4 @@ message = "this is my first message"
 
 #mqtt.publish_messages(server,topic,message)
 
-damsg = mqtt.test()
-
-damsg.publish_msg()
+mqtt_backend.publish_message(server,topic,message)
